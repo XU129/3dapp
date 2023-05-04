@@ -1,0 +1,312 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Ysabeau&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Ysabeau', sans-serif;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: radial-gradient(rgb(220, 115, 91),rgb(128, 5, 5));
+    flex-wrap: wrap;
+}
+
+/*container*/
+.container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+}
+
+/*Logo*/
+.logo {
+    font-family:'Dancing Script', cursive;
+    font-size: 3rem;
+    display: flex;
+    color: transparent;
+}
+.logo span {
+    animation: animate 3s linear infinite;
+    animation-delay: calc(0.1s * var(--i));
+}
+@keyframes animate {
+    0%
+    {
+        color: #fff;
+        filter: blur(0.5px) hue-rotate(0deg);
+        text-shadow: 0 0 1vw #00b3ff,
+        0 0 20px #00b3ff,
+        0 0 40px #00b3ff,
+        0 0 80px #00b3ff;
+    }
+    30%,70%
+    {
+        color: #fff;
+        filter: blur(0.5px) hue-rotate(360deg);
+        text-shadow: 0 0 1vw #00b3ff,
+        0 0 20px #00b3ff,
+        0 0 40px #00b3ff,
+        0 0 80px #00b3ff;
+    }
+    100%
+    {
+        color: transparent;
+        box-shadow: none;
+        filter: blur(0.5px) hue-rotate(0deg);
+    }
+}
+
+/*Strapline*/
+h1 {
+    font-size: 0.5rem;
+    color: #fff;
+    margin-bottom: -30px;
+    margin-left: -18px;
+}
+
+/*navbar*/
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+}
+a:hover {
+    color: black;
+}
+/*header*/
+header {
+    position: relative;
+    padding: 0 2rem;
+}
+.navbar {
+    width: 100%;
+    height: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .links {
+    display: flex;
+    gap: 2rem;
+}
+
+.navbar .toggle_btn {
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+.action_btn {
+    background-color: rgb(20, 20, 20);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: scale 0.2 ease;
+}
+.action_btn:hover {
+    scale: 1.05;
+    color: #fff;
+}
+.action_btn:active {
+    scale: 0.95;
+}
+/*dropdown menu*/
+.dropdown_menu {
+    display: none;
+    position: absolute;
+    right: 2rem;
+    top: 60px;
+    height: 0;
+    width: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.dropdown_menu.open {
+    height: 240px;
+}
+.dropdown_menu li {
+    padding: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dropdown_menu .action_btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+/*Contact*/
+#contact {
+    display:none;
+    position:fixed;
+    top:40%;
+    left:10%;
+    width:80%;
+    height:auto;
+    z-index:9999;
+    color: #fff;
+    padding: 5%;
+    background-color:rgba(40, 0, 0, 0.8);
+    border-radius:5px;
+}
+#contact button {
+    width: 100%;
+}
+/*responsive*/
+@media (max-width: 576px) {
+    .dropdown_menu {
+        left: 2rem;
+        width: unset;
+    }
+    .card{
+        width: auto;
+        max-width: 350px;
+        align-items: flex-start;
+        margin: 13px;
+    }
+    .card:hover{
+        height: 600px;
+    }
+    .card .content{
+        width: 100%;
+        left: 0;
+        padding: 30px;
+    }
+    .card:hover img{
+        top: 70%;
+        left: 50%;
+        height: 300px;
+    }
+}
+@media (max-width: 992px) {
+    .navbar .links,
+    .navbar .action_btn {
+        display: none;
+    }
+    .navbar .toggle_btn {
+        display: block;
+    }
+    .dropdown_menu {
+        display: block;
+    }
+}
+
+/*Product card*/
+.card{
+    position: relative;
+    width: 600px;
+    height: 350px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    transition: 0.5s;
+}
+.card .circle{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+}
+.card .circle::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(215, 182, 90);
+    clip-path: circle(120px at center);
+    border-radius: 20px;
+    transition: 0.5s;
+}
+.card:hover .circle::before{
+    clip-path: circle(400px at center);
+    background: rgb(170, 0, 0);
+}
+.card img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 300px;
+    pointer-events: none;
+    transition: 0.5s;
+}
+.card:hover img{
+    display: block;
+    left: 80%;
+    height: 400px;
+}
+.card .content{
+    position: relative;
+    width: 50%;
+    padding: 20px 20px 20px 40px;
+    transition: 0.5s;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+}
+.card:hover .content{
+    left: 0;
+    opacity: 1;
+    visibility: visible;
+}
+.card .content h2{
+    color: white;
+    text-transform: uppercase;
+    font-size: 2em;
+    line-height: 1em;
+    margin-bottom: 7px;
+}
+.card .content p{
+    color: white;
+    font-size: 0.8em;
+}
+
+.card:nth-child(2):hover .circle::before{
+    clip-path: circle(400px at center);
+    background: rgb(50, 0, 0);
+}
+
+.card:nth-child(3):hover .circle::before{
+    clip-path: circle(400px at center);
+    background: rgb(20, 100, 0);
+}
+
+button {
+    color:white;
+    font-size: small;
+    text-align: center;
+    background-color: black;
+    margin: 5px;
+    padding: 5px;
+    width: 180px;
+    border-color: #282828;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+button:hover {
+    background-color: rgb(128, 5, 5);
+    color: #dadada;
+}

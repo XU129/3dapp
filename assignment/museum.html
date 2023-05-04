@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Virtual Museum Page</title>
+        <link rel='stylesheet' href='css/bootstrap.css'>
+        <link rel="stylesheet" href="css/all.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    </head>
+
+    <body id="museumbody">
+
+        <header>
+            <div class="navbar">
+                <div class="logo">
+                    <span style="--i:1;">C</span>
+                    <span style="--i:2;">o</span>
+                    <span style="--i:3;">c</span>
+                    <span style="--i:4;">a</span>
+                    <span style="--i:5;margin-left: 0.8vw;">·</span>
+                    <span style="--i:6;margin-top: 0.6vw;margin-left: 1.2vw;">C</span>
+                    <span style="--i:7;margin-top: 0.6vw;">o</span>
+                    <span style="--i:8;margin-top: 0.6vw;">l</span>
+                    <span style="--i:9;margin-top: 0.6vw;">a</span>
+                </div>
+                <div class="strapline">
+                    <h1>
+                        The World's Favourite Soft Drink
+                    </h1>
+                </div>
+                <ul class="links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="museum.html">Museum</a></li>
+                    <li><a href="model.html">Models</a></li>
+                    <li><a href="#" onclick="showcontact()">Contact</a></li>
+                </ul>
+                    <a href="model.html" class="action_btn">Get Start</a>
+                <div class="toggle_btn">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+    
+            <div class="dropdown_menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="museum.html">Museum</a></li>
+                <li><a href="model.html">Models</a></li>
+                <li><a href="#" onclick="showcontact()">Contact</a></li>
+                <li><a href="model.html" class="action_btn">Get Start</a></li>
+            </div>
+
+            <div id="contact">
+                <p>MY 3D APP CONTACT DETAILS</p>
+                <p>Xinyin Xu, <br>Email: xx91@sussex.ac.uk</p>
+                <button onclick="closecontact()">Close</button>
+            </div>
+        </header>
+
+        <main>
+        <div id="preview" class="container">
+            <div class="row">
+                <div class="col">
+            <img src="assets/images/mu1.png" class="img-thumbnail" alt="Cinque Terre"/>
+                </div>
+                <div class="col">
+            <img src="assets/images/mu2.png" class="img-thumbnail" alt="Cinque Terre"/>
+                </div>
+                <div class="col">
+            <img src="assets/images/mu3.png" class="img-thumbnail" alt="Cinque Terre"/>
+                </div>
+            </div>
+        </div>
+        <video src="assets/images/cola.mp4" controls style="width: 80%;margin-left: 10%;"></video>
+        
+        <div id="preview" class="container">
+            <div class="row">
+                <div class="col">
+            <img src="assets/images/mu4.png" class="img-thumbnail" alt="Cinque Terre"/>
+                </div>
+                <div class="col">
+            <img src="assets/images/mu5.png" class="img-thumbnail" alt="Cinque Terre"/>
+                </div>
+                <div class="col">
+            <img src="assets/images/mu6.png" class="img-thumbnail" alt="Cinque Terre"/>
+                </div>
+            </div>
+        </div>
+        <video src="assets/images/pepper.mp4" controls style="width: 80%;margin-left: 10%;"></video>
+        
+        <div id="preview" class="container">
+            <div class="row">
+                <div class="col">
+            <img src="assets/images/mu7.png" class="img-thumbnail" alt="Cinque Terre"/>
+                </div>
+                <div class="col">
+            <img src="assets/images/mu8.png" class="img-thumbnail" alt="Cinque Terre"/>
+                </div>
+                <div class="col">
+            <img src="assets/images/mu9.png" class="img-thumbnail" alt="Cinque Terre"/>
+                </div>
+            </div>
+        </div>
+        <video src="assets/images/sprite.mp4" controls style="width: 80%;margin-left: 10%;"></video>
+        
+        <br><br><br><br>
+
+        </main>
+
+        <script>
+            
+            for (let img of document.querySelectorAll(".img-thumbnail")) {
+                img.addEventListener("click",()=>{
+
+                    let container = document.createElement("div")
+                    container.classList.add("preview_container")
+                    container.onclick = function(){
+                        container.remove()
+                    }
+                    let innerImg = document.createElement("img")
+                    innerImg.classList.add("image")
+
+                    innerImg.src = img.src
+                    
+                    container.onwheel = function(event){
+                        event.preventDefault();
+                        const width = getComputedStyle(innerImg).width.slice(0, -2)
+                        const height = getComputedStyle(innerImg).height.slice(0, -2)
+
+                        if (event.deltaY > 0){
+                            innerImg.style.width = parseInt(width) * 1.2 + "px"
+                            innerImg.style.height = parseInt(height) * 1.2 + "px"
+                        }else if (event.deltaY < 0){
+                            innerImg.style.width = parseInt(width) * 0.8 + "px"
+                            innerImg.style.height = parseInt(height) * 0.8 + "px"
+                        }
+                        
+                    }
+                    container.append(innerImg)
+                    document.body.append(container)
+                })
+            }
+
+        </script>
+
+        <script src='scripts/js/bootstrap.js'></script>
+        <script src='scripts/js/custom.js'></script> 
+    </body>
+</html>

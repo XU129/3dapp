@@ -1,0 +1,246 @@
+<html> 
+    <head> 
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <title>X3DOM Model Page</title>
+        
+        <!--CSS Link-->
+        <link rel='stylesheet' href='css/bootstrap.css'></link> 
+        <link rel='stylesheet' href='css/x3dom.css'></link> 
+        <link rel='stylesheet' href='css/all.css'></link> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ 
+    </head>
+
+    <body>
+    
+    <!--Navbar-->
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <span style="--i:1;">C</span>
+                <span style="--i:2;">o</span>
+                <span style="--i:3;">c</span>
+                <span style="--i:4;">a</span>
+                <span style="--i:5;margin-left: 0.8vw;">·</span>
+                <span style="--i:6;margin-top: 0.6vw;margin-left: 1.2vw;">C</span>
+                <span style="--i:7;margin-top: 0.6vw;">o</span>
+                <span style="--i:8;margin-top: 0.6vw;">l</span>
+                <span style="--i:9;margin-top: 0.6vw;">a</span>
+            </div>
+            <div class="strapline">
+                <h1>
+                    The World's Favourite Soft Drink
+                </h1>
+            </div>
+            <ul class="links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="museum.html">Museum</a></li>
+                <li><a href="model.html">Models</a></li>
+                <li><a href="#" onclick="showcontact()">Contact</a></li>
+            </ul>
+                <a href="model.html" class="action_btn">Get Start</a>
+            <div class="toggle_btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+
+        <div class="dropdown_menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="museum.html">Museum</a></li>
+            <li><a href="model.html">Models</a></li>
+            <li><a href="#" onclick="showcontact()">Contact</a></li>
+            <li><a href="model.html" class="action_btn">Get Start</a></li>
+        </div>
+
+        <div id="contact">
+            <p>MY 3D APP CONTACT DETAILS</p>
+            <p>Xinyin Xu, <br>Email: xx91@sussex.ac.uk</p>
+            <button onclick="closecontact()">Close</button>
+        </div>
+    </header>
+
+    <br>
+    <main>
+    <!--Model module-->
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12 col-md-6 col-lg-5">
+                <!--Prompt label-->
+                <div id="notes">
+                    <p>Notes: <br>
+                    1. Click the product picture at the bottom (small device) or on the right (medium and large device) to switch the 3D model<br>
+                    2. Slide the lower RGB display bar to change the background color of the 3D model
+                    </p>
+                </div>
+
+                <!--X3D-->
+                <x3d height=330px>
+                    <scene id="mainScene">
+
+                        <!--Lights-->
+                        <navigationInfo id="head" headlight='true' type='"EXAMINE"'></navigationInfo>
+                        <directionalLight id="Top_light" direction='0 -1 0' on ="TRUE" intensity='2.0' shadowIntensity='0.0'>
+                        </directionalLight>
+                        <directionalLight id="Left_light" direction='-1 -1 0' on ="TRUE" intensity='2.0' shadowIntensity='0.0'>
+                        </directionalLight>
+
+                        <!--Views-->
+                        <Transform DEF="View_front"
+                        translation="10.3935413360596 0 -21.2797012329102"
+                        rotation="0 -1 0 2.01899099349976">
+                        <Viewpoint id="front"
+                            position="0 0 0"
+                            orientation="0 -1 0 1.57079601287842"
+                            fieldOfView="0.927295029163361"
+                            description="camera" />
+                        </Transform>
+                        <Transform DEF="View_left"
+                            translation="21.2786235809326 0 10.1902570724487"
+                            rotation="0 1 0 2.69591403007507">
+                            <Viewpoint id="left"
+                                position="0 0 0"
+                                orientation="0 -1 0 1.57079601287842"
+                                fieldOfView="0.927295029163361"
+                                description="camera" />
+                        </Transform>
+                        <Transform DEF="View_top"
+                            translation="0 23.572151184082 0"
+                            rotation="0.216120004653931 -0.216120004653931 -0.952147006988525 1.61981296539307">
+                            <Viewpoint id="top"
+                                position="0 0 0"
+                                orientation="0 -1 0 1.57079601287842"
+                                fieldOfView="0.927295029163361"
+                                description="camera" />
+                        </Transform>
+
+                        <!--Model-->
+                        <Transform DEF="model" rotation='0 1 0 0'>
+                            <inline id = inlineBox nameSpaceName="model" mapDEFToID="true" url="assets/x3d/coca.x3d"> </inline>
+                        </Transform>
+
+                        <!--Spin-->
+                        <timeSensor id="spin" DEF="time" cycleInterval="5" enabled="false" loop="true"></timeSensor>
+                        <orientationInterpolator DEF="spin" key="0 0.5 1" keyValue="0 1 0 0, 0 1 0 3.14, 0 1 0 6.28"></orientationInterpolator>
+                        <Route fromNode="time" fromField ="fraction_changed" toNode="spin" toField="set_fraction"></Route>
+                        <Route fromNode="spin" fromField ="value_changed" toNode="model" toField="rotation"></Route>
+
+                    </scene>
+                </x3d>
+            
+                <!--3D backgroud color control-->
+                <div id="3dbkgd" class="tdbk">
+                        <label for="r" style="color: rgb(100, 0, 0);">R:</label>
+                    <input type="range" id="r" min="0" max="255" value="255" class="range" onchange="changeBackgroundColor()">
+                        <span id="r-value" style="font-size: 12px;">255</span>
+                    <br>
+                        <label for="g" style="color: rgb(0, 100, 0);">G:</label>
+                    <input type="range" id="g" min="0" max="255" value="255" class="range" onchange="changeBackgroundColor()">
+                        <span id="g-value" style="font-size: 12px;">255</span>
+                    <br>
+                        <label for="b" style="color: rgb(0, 0, 100);">B:</label>
+                    <input type="range" id="b" min="0" max="255" value="255" class="range" onchange="changeBackgroundColor()">
+                        <span id="b-value" style="font-size: 12px;">255</span>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-3">
+                <!--Table of 3D items-->
+                <table id="model_table" class="gallery">
+                    <tr>
+                        <td file="assets/x3d/coca.x3d">
+                            <img src="assets/images/coca_cola.jpg"/>
+                        </td>
+                        <td file="assets/x3d/cup.x3d">
+                            <img src="assets/images/dr_pepper.jpg"/>
+                        </td>
+                        <td file="assets/x3d/bottle.x3d">
+                            <img src="assets/images/sprite.jpg"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="caption">
+                    <p>Coco-Cola Original Taste is the world's favourite soft drink and has been enjoyed since 1886. Food, friends and Coca-Cola Original Taste - better together!</p>
+                    <p>For over a century, Dr.Pepper's truly unique taste has been impossible to describe… a taste so misunderstood that's confusingly good. Grab it now, thank us later.</p>
+                    <p>Sprite, Great Britain's leading lemon and lime flavoured soft drink, now with its most crisp and refreshing taste ever!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <!--Control module-->
+    <div class="container">
+        <div class="row">
+            <!--Lights control-->
+            <div class="col" id="lights">
+                <label style="font-size: medium;">Light control center</label>
+
+                    <label style="font-size: small;">Top light:  
+                <input type="checkbox" class="switch" onclick="lightSwitch('Top_light')"/></label>
+                    <label style="font-size: small;">Left light:  
+                <input type="checkbox" class="switch" onclick="lightSwitch('Left_light')"/></label>
+                    <label style="font-size: small;">Headlight:  
+                <input type="checkbox" class="switch" onclick="headlight()"/></label>
+            </div>
+
+            <!--Views control-->
+            <div class="col" id="views">
+                <label style="font-size: medium;">View control center</label>
+
+                <button onclick="document.getElementById('front').setAttribute('set_bind','true');">Front View</button>
+                <button onclick="document.getElementById('left').setAttribute('set_bind','true');">Left View</button>
+                <button onclick="document.getElementById('top').setAttribute('set_bind','true');">Top View</button>
+            </div>
+
+            <!--Spin control-->
+            <div class="col" id="spinn">
+                <label style="font-size: medium;">Spin control center</label>
+
+                <button onclick="document.getElementById('spin').setAttribute('set_enabled','true');">Start</button>
+                <button onclick="document.getElementById('spin').setAttribute('set_enabled','false');">Stop</button>
+            </div>
+            
+            <!--Mode control-->
+            <div class="col" id="mode">
+                <label style="font-size: medium;">Wireframe mode switch</label>
+                <button id="wfmode" onclick="toggleWireframe()">Display point pattern</button>
+            </div>
+
+        </div>
+    </div>
+
+    <br>
+    </main>
+        <!--JS Link-->
+        <script src='scripts/js/x3dom.js'></script>
+        <script src='scripts/js/x3dom-full.js'></script>
+        <script src='scripts/js/bootstrap.js'></script>
+        <script src='scripts/js/modelaction.js'></script> 
+        <script src='scripts/js/custom.js'></script> 
+
+        <script>
+        //Wireframe mode
+        var button = document.getElementById("wfmode");
+        button.addEventListener('click', function() {
+            var text = document.getElementById("wfmode");
+            if (text.innerHTML === "Display point pattern") {
+                text.innerHTML = "Display line pattern";
+            } else if (text.innerHTML === "Display line pattern"){
+                text.innerHTML = "Display pomplete model";
+            }else{
+                text.innerHTML = "Display point model";
+            }
+        });
+        </script>
+    </body> 
+
+</html>           

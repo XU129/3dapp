@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>3D App Project</title>
+        <link rel="stylesheet" href="css/index.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    </head>
+    <body>
+        
+        <header>
+            <div class="navbar">
+                <div class="logo">
+                    <span style="--i:1;">C</span>
+                    <span style="--i:2;">o</span>
+                    <span style="--i:3;">c</span>
+                    <span style="--i:4;">a</span>
+                    <span style="--i:5;margin-left: 0.8vw;">·</span>
+                    <span style="--i:6;margin-top: 0.8vw;margin-left: 1.2vw;">C</span>
+                    <span style="--i:7;margin-top: 0.8vw;">o</span>
+                    <span style="--i:8;margin-top: 0.8vw;">l</span>
+                    <span style="--i:9;margin-top: 0.8vw;">a</span>
+                </div>
+
+                <div class="strapline">
+                    <h1>
+                        The World's Favourite Soft Drink
+                    </h1>
+                </div>
+
+                <ul class="links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="museum.html">Museum</a></li>
+                    <li><a href="model.html">Models</a></li>
+                    <li><a href="#" onclick="showcontact()">Contact</a></li>
+                </ul>
+                <a href="model.html" class="action_btn">Get Start</a>
+                <div class="toggle_btn">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+
+            <div class="dropdown_menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="museum.html">Museum</a></li>
+                <li><a href="model.html">Models</a></li>
+                <li><a href="#" onclick="showcontact()">Contact</a></li>
+                <li><a href="model.html" class="action_btn">Get Start</a></li>
+            </div>
+
+            <div id="contact">
+                <p>MY 3D APP CONTACT DETAILS</p>
+                <p>Xinyin Xu, <br>Email: xx91@sussex.ac.uk</p>
+                <button onclick="closecontact()">Close</button>
+            </div>
+        </header>
+
+        <main>
+        <img src="assets/images/main_3D.jpg"
+            style="min-height: 240px;width: 100%;padding: 5%;"/>
+
+        <div class="container">
+
+            <div class="card">
+                <div class="circle">
+                    <div class="content">
+                        <h2>Coca Cola</h2>
+                        <p>It was 1886, John Pemberton, an Atlanta pharmacist, was inspired by simple curiosity. One afternoon, he stirred up a fragrant, caramel-coloured liquid and, when it was done, the mixture was combined with carbonated water and sampled by customers who all agreed - this new drink was something special!</p>
+                    </div>
+                    <img src="./assets/images/icecola.png" alt="">
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="circle">
+                    <div class="content">
+                        <h2>Dr. Pepper</h2>
+                        <p>Dr Pepper's unique, sparkling blend of 23 fruit flavours has been around for well over a century and it's still the same, with that distinctive flavour you just can't quite put your tongue on. It was created by Texas pharmacist Charles Alderton in 1885. The distinctive, bold taste of Dr Pepper has been popular ever since.</p>
+                    </div>
+                    <img src="./assets/images/pepper.png" alt="">
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="circle">
+                    <div class="content">
+                        <h2>Sprite</h2>
+                        <p>First introduced in 1961, crisp, refreshing, clean-tasting Sprite is now the world's leading lemon and lime flavoured soft drink and is sold in more than 190 different countries. Sprite Zero, part of our no sugar Zero range, offers the delicious lemon lime taste of Sprite without the sugar or calories.</p>
+                    </div>
+                    <img src="./assets/images/lemonsprit.png" alt="">
+                </div>
+            </div>
+
+        </div>
+        </main>
+
+    <script src='scripts/js/custom.js'></script> 
+    
+    </body>
+</html>
